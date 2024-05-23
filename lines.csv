@@ -1,0 +1,140 @@
+,color,long_name,short_name,sort_order,text_color
+line-Red,DA291C,Red Line,,10010,FFFFFF
+line-Mattapan,DA291C,Mattapan Trolley,,10011,FFFFFF
+line-Orange,ED8B00,Orange Line,,10020,FFFFFF
+line-Green,00843D,Green Line,,10032,FFFFFF
+line-Blue,003DA5,Blue Line,,10040,FFFFFF
+line-SLWaterfront,7C878E,Silver Line SL1/SL2/SL3,,10051,FFFFFF
+line-SLWashington,7C878E,Silver Line SL4/SL5,,10055,FFFFFF
+line-Fairmount,80276C,Fairmount Line,,20001,FFFFFF
+line-Fitchburg,80276C,Fitchburg Line,,20002,FFFFFF
+line-Worcester,80276C,Framingham/Worcester Line,,20003,FFFFFF
+line-Franklin,80276C,Franklin/Foxboro Line,,20004,FFFFFF
+line-Greenbush,80276C,Greenbush Line,,20005,FFFFFF
+line-Haverhill,80276C,Haverhill Line,,20006,FFFFFF
+line-Kingston,80276C,Kingston Line,,20007,FFFFFF
+line-Lowell,80276C,Lowell Line,,20008,FFFFFF
+line-Middleborough,80276C,Middleborough/Lakeville Line,,20009,FFFFFF
+line-Needham,80276C,Needham Line,,20010,FFFFFF
+line-Newburyport,80276C,Newburyport/Rockport Line,,20011,FFFFFF
+line-Providence,80276C,Providence/Stoughton Line,,20012,FFFFFF
+line-Foxboro,80276C,Foxboro Event Service,,20013,FFFFFF
+line-CapeFlyer,006595,CapeFlyer,,21000,FFFFFF
+line-Boat-F4,008EAA,Charlestown Ferry,,30001,FFFFFF
+line-Boat-F1,008EAA,Hingham/Hull Ferry,,30002,FFFFFF
+line-Boat-EastBoston,008EAA,East Boston Ferry,,30005,FFFFFF
+line-Boat-Lynn,008EAA,Lynn Ferry,,30007,FFFFFF
+line-Boat-F6,008EAA,Winthrop Ferry,,30009,FFFFFF
+line-1,FFC72C,Harvard - Nubian via Massachusetts Avenue,1,40010,000000
+line-747,FFC72C,Sullivan - Ruggles,CT2,40020,000000
+line-171708,FFC72C,"Beth Israel Deaconess, Boston Medical Center, or Nubian - Andrew or Logan Airport",CT3/171,40030,000000
+line-4,FFC72C,North Station - Tide Street,4,50040,000000
+line-10,FFC72C,City Point - Copley,10,50050,000000
+line-7,FFC72C,City Point - Downtown Boston,7,50070,000000
+line-8,FFC72C,Harbor Point/UMass - Kenmore,8,50080,000000
+line-9,FFC72C,City Point - Copley via Broadway Station,9,50090,000000
+line-11,FFC72C,City Point - Downtown Boston,11,50110,000000
+line-14,FFC72C,Roslindale Square - Heath Street,14,50140,000000
+line-15,FFC72C,Kane Square - Ruggles,15,50150,000000
+line-16,FFC72C,Forest Hills - Andrew or UMass,16,50160,000000
+line-1719,FFC72C,"Fields Corner - Kenmore, Ruggles, or Andrew",17/19,50170,000000
+line-18,FFC72C,Ashmont - Andrew,18,50180,000000
+line-21,FFC72C,Ashmont - Forest Hills,21,50210,000000
+line-22,FFC72C,Ashmont - Ruggles via Jackson Square,22,50220,000000
+line-23,FFC72C,Ashmont - Ruggles via Washington Street,23,50230,000000
+line-242733,FFC72C,Wakefield Avenue or Dedham - Mattapan - Ashmont,24/27/33,50240,000000
+line-26,FFC72C,Ashmont - Gallivan Boulevard,26,50260,000000
+line-28,FFC72C,Mattapan - Ruggles,28,50280,000000
+line-29,FFC72C,Mattapan - Jackson Square,29,50290,000000
+line-30,FFC72C,Mattapan - Forest Hills via Roslindale Square,30,50300,000000
+line-31,FFC72C,Mattapan - Forest Hills via Morton Street,31,50310,000000
+line-32,FFC72C,Wolcott Square - Forest Hills,32,50320,000000
+line-3434E,FFC72C,Walpole or Dedham Square - Forest Hills,34/34E,50340,000000
+line-35,FFC72C,Dedham Mall - Forest Hills,35,50350,000000
+line-36,FFC72C,Charles River Loop - Forest Hills,36,50360,000000
+line-37,FFC72C,Baker Street & Vermont Street - Forest Hills,37,50370,000000
+line-38,FFC72C,Wren Street - Forest Hills,38,50371,000000
+line-39,FFC72C,Forest Hills - Back Bay Station,39,50390,000000
+line-4050,FFC72C,Cleary Square or Georgetowne - Forest Hills,40,50400,000000
+line-41,FFC72C,Centre Street & Eliot Street - JFK/UMass Station,41,50410,000000
+line-42,FFC72C,Forest Hills - Nubian,42,50420,000000
+line-43,FFC72C,Ruggles - Downtown Boston,43,50430,000000
+line-44,FFC72C,Jackson Square - Ruggles,44,50440,000000
+line-45,FFC72C,Franklin Park - Ruggles,45,50450,000000
+line-47,FFC72C,"Central Square, Cambridge - Broadway Station",47,50470,000000
+line-51,FFC72C,Reservoir - Forest Hills,51,50510,000000
+line-5259,FFC72C,Needham Junction or Dedham Mall - Watertown,52/59,50520,000000
+line-55,FFC72C,Jersey Street & Queensberry Street - Copley,55,50550,000000
+line-5757A,FFC72C,Watertown Yard or Oak Square - Kenmore,57/57A,50570,000000
+line-6065,FFC72C,Chestnut Hill or Brighton - Kenmore,60/65,50600,000000
+line-6170170,FFC72C,"Waltham - Central Square, Cambridge",61/70/170,50610,000000
+line-6276,FFC72C,Bedford VA - Alewife via Hanscom Airport,62/76,50620,000000
+line-6468,FFC72C,Oak Square or Harvard - University Park or Kendall/MIT,64/68,50640,000000
+line-66,FFC72C,Harvard - Nubian via Allston,66,50660,000000
+line-6779,FFC72C,Turkey Hill or Arlington Heights - Alewife,67/79,50670,000000
+line-69,FFC72C,Harvard - Lechmere,69,50690,000000
+line-71,FFC72C,Watertown Square - Harvard,71,50710,000000
+line-727475,FFC72C,Belmont Center or Huron Avenue - Harvard,72/74/75,50720,000000
+line-73,FFC72C,Waverley Square - Harvard,73,50730,000000
+line-77,FFC72C,Arlington Heights - Harvard,77,50770,000000
+line-7884,FFC72C,Arlmont Village - Harvard,78/84,50780,000000
+line-80,FFC72C,Arlington Center - Lechmere,80,50800,000000
+line-83,FFC72C,"Rindge Avenue - Central Square, Cambridge",83,50830,000000
+line-85,FFC72C,Spring Hill - Kendall/MIT,85,50850,000000
+line-86,FFC72C,Sullivan - Reservoir,86,50860,000000
+line-87,FFC72C,Clarendon Hill or Arlington Center - Lechmere via Somerville Avenue,87,50870,000000
+line-88,FFC72C,Clarendon Hill - Lechmere via Highland Avenue,88,50880,000000
+line-89,FFC72C,Clarendon Hill or Davis - Sullivan,89,50890,000000
+line-90,FFC72C,Davis - Wellington,90,50900,000000
+line-91,FFC72C,"Sullivan - Central Square, Cambridge",91,50910,000000
+line-92,FFC72C,Assembly - Downtown Boston,92,50920,000000
+line-93,FFC72C,Sullivan - Downtown Boston,93,50930,000000
+line-94,FFC72C,Medford Square - Davis,94,50940,000000
+line-95,FFC72C,West Medford - Sullivan via Mystic Avenue,95,50950,000000
+line-96,FFC72C,Medford Square - Harvard,96,50960,000000
+line-97,FFC72C,Malden Center - Wellington,97,50970,000000
+line-99,FFC72C,"Woodland Road, Stoneham - Wellington",99,50990,000000
+line-100,FFC72C,Elm Street - Wellington,100,51000,000000
+line-101,FFC72C,Malden Center - Sullivan via Winter Hill,101,51010,000000
+line-104109,FFC72C,Linden Square or Malden Center - Sullivan,104/109,51040,000000
+line-105,FFC72C,Malden Center - Sullivan via Newland Street Housing,105,51050,000000
+line-106,FFC72C,"Lebanon Street, Malden - Wellington",106,51060,000000
+line-108,FFC72C,Linden Square - Wellington,108,51080,000000
+line-110,FFC72C,Wonderland - Wellington,110,51100,000000
+line-111,FFC72C,"Everett, Revere, or Chelsea - Haymarket",111,51110,000000
+line-112,FFC72C,Wellington - Wood Island,112,51120,000000
+line-114116117,FFC72C,Wonderland or Chelsea - Maverick,114/116/117,51140,000000
+line-119,FFC72C,Northgate Shopping Center - Beachmont,119,51190,000000
+line-120121,FFC72C,Orient Heights or Wood Island - Maverick,120/121,51200,000000
+line-131132,FFC72C,Melrose Highlands or Redstone - Oak Grove or Malden Center,131/132,51310,000000
+line-134,FFC72C,North Woburn - Wellington,134,51340,000000
+line-136137,FFC72C,Reading Depot - Malden Center,136/137,51360,000000
+line-195,FFC72C,Shattuck Hospital - Downtown Boston,195,51950,000000
+line-201202,FFC72C,Fields Corner Loop,201/202,52010,000000
+line-210211212,FFC72C,"Quincy Center - Fields Corner, Squantum, or North Quincy",210/211/212,52100,000000
+line-214216,FFC72C,Germantown or Houghs Neck - Quincy Center,214/216,52140,000000
+line-215,FFC72C,Quincy Center - Ashmont via West Quincy,215,52150,000000
+line-217245,FFC72C,Quincy Center - Ashmont or Mattapan,217/245,52170,000000
+line-220221222,FFC72C,"East Weymouth, Hingham Depot, or Fort Point - Quincy Center",220/221/222,52200,000000
+line-225226,FFC72C,Weymouth Landing or Columbian Square - Quincy Center or Braintree,225/226,52250,000000
+line-230,FFC72C,Montello Commuter Rail Station - Quincy Center,230,52300,000000
+line-236,FFC72C,South Shore Plaza - Quincy Center,236,52360,000000
+line-238,FFC72C,Holbrook/Randolph Commuter Rail Station - Quincy Center,238,52380,000000
+line-240,FFC72C,Avon Square - Ashmont,240,52400,000000
+line-350351,FFC72C,North Burlington - Alewife,350/351,53500,000000
+line-354,FFC72C,North Burlington - Downtown Boston,354,53540,000000
+line-411430,FFC72C,"Saugus Center or Jack Satter House, Revere - Malden Center",411/430,54110,000000
+line-424450456,FFC72C,Salem Depot or Eastern Avenue & Essex Street - Haymarket or Wonderland,424/450/456,54240,000000
+line-426428,FFC72C,"Central Square, Lynn - Haymarket or Wonderland",426/428,54260,000000
+line-429,FFC72C,"Northgate Shopping Center - Central Square, Lynn",429,54290,000000
+line-434435436,FFC72C,"Liberty Tree Mall or Peabody - Central Square, Lynn or Neptune Towers",434/435/436,54340,000000
+line-439441442,FFC72C,"Marblehead or Bass Point, Nahant - Wonderland or Central Square, Lynn",439/441/442,54390,000000
+line-451465,FFC72C,Danvers Square - Salem Depot,451/465,54510,000000
+line-455,FFC72C,Salem Depot - Wonderland,455,54550,000000
+line-501503,FFC72C,Brighton - Downtown Boston via Copley,501/503,55010,000000
+line-502504,FFC72C,Watertown Yard - Downtown Boston via Copley,502/504,55020,000000
+line-505553554,FFC72C,"Roberts, Waltham Center, or Waverley - Newton Corner",505/553/554,55050,000000
+line-556558,FFC72C,Riverside or Waltham Highlands - Newton Corner,556/558,55560,000000
+line-712713,FFC72C,Winthrop - Orient Heights,712/713,57120,000000
+line-714,FFC72C,"Pemberton Point, Hull - Hingham",714,57140,000000
+line-716,FFC72C,Cobbs Corner - Mattapan,716,57160,000000
