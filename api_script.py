@@ -1,61 +1,68 @@
 import requests
+import gtfs_realtime_pb2
+import gzip
 import json
+import os
 from datetime import datetime
-from pathlib import Path
-
-with open('api_key.txt') as f:
-    API_KEY = f.read()
-BASE_URL = 'https://api-v3.mbta.com'
-DIRECTORY = Path.cwd() / 'data/api_fetches'
 
 
-def fetch_data(endpoint, params=None):
-    headers = {'api-key': API_KEY}
-    try:
-        response = requests.get(f"{BASE_URL}/{endpoint}", headers=headers, params=params)
+def fetch_gtfs_realtime_data(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.content
+    else:
         response.raise_for_status()
-        return response.json()
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching data from {endpoint}: {e}")
-        return None
 
 
-def save_json(data, directory_path, filename):
-    if not directory_path.exists():
-        directory_path.mkdir(parents=True)
-
-    filepath = directory_path / filename
-    with filepath.open('w') as json_file:
-        json.dump(data, json_file, indent=4)
-
-    print(f"Data saved to {filepath}")
+def parse_gtfs_realtime_data(data):
+    feed = gtfs_realtime_pb2.FeedMessage()
+    feed.ParseFromString(data)
+    return feed
 
 
-def get_predictions(route_types):
-    data = fetch_data('predictions', params={'filter[route_type]': str(route_types)})
-    return data['data']
+def save_predictions_to_directory(feed, directory):
+    if not os.path.exists(directory):
+        os.makedirs(directory)
 
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = os.path.join(directory, f"predictions_{timestamp}.json")
 
-def get_vehicle_locations(route_types):
-    data = fetch_data('vehicles', params={'filter[route_type]': str(route_types)})
-    return data['data']
+    predictions = []
+    for entity in feed.entity:
+        if entity.trip_update:
+            trip_update = {
+                "trip_id": entity.trip_update.trip.trip_id,
+                "start_time": entity.trip_update.trip.start_time,
+                "start_date": entity.trip_update.trip.start_date,
+                "stop_time_updates": []
+            }
+            for stop_time_update in entity.trip_update.stop_time_update:
+                update = {
+                    "stop_id": stop_time_update.stop_id,
+                    "arrival": stop_time_update.arrival.time if stop_time_update.HasField("arrival") else None,
+                    "departure": stop_time_update.departure.time if stop_time_update.HasField("departure") else None
+                }
+                trip_update["stop_time_updates"].append(update)
+            predictions.append(trip_update)
+
+    with open(filename, 'w') as f:
+        json.dump(predictions, f, indent=2)
+
+    print(f"Saved predictions to {filename}")
 
 
 def main():
-    route_types = [0, 1, 2, 3]  # Light Rail, Heavy Rail, Commuter Rail, Bus
+    url = 'https://cdn.mbta.com/realtime/TripUpdates.pb'
+    output_directory = "predictions_data"
 
-    # Fetch predictions for each stop
-    predictions = get_predictions(route_types)
-    if predictions:
-        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-        filename = f"predictions_{timestamp}.json"
-        save_json(predictions, DIRECTORY, filename)
-
-    vehicles = get_vehicle_locations(route_types)
-    if vehicles:
-        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-        filename = f"vehicle_locations_{timestamp}.json"
-        save_json(vehicles, DIRECTORY, filename)
+    try:
+        data = fetch_gtfs_realtime_data(url)
+        # If the data is gzipped, uncomment the next line
+        # data = gzip.decompress(data)
+        feed = parse_gtfs_realtime_data(data)
+        save_predictions_to_directory(feed, output_directory)
+    except requests.exceptions.RequestException as e:
+        print(f"An error occurred: {e}")
 
 
 if __name__ == "__main__":
