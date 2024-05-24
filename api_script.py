@@ -53,7 +53,7 @@ def save_predictions_to_directory(feed, directory):
 
 def main():
     url = 'https://cdn.mbta.com/realtime/TripUpdates.pb'
-    output_directory = "predictions_data"
+    output_directory = "data/ap_fetches"
 
     try:
         data = fetch_gtfs_realtime_data(url)
