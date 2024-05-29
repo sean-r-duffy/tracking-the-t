@@ -7,7 +7,7 @@ from datetime import datetime
 # Tkinter code pulled from online
 
 def set_up_api():
-    with open('api_key.txt') as file:
+    with open('mbta_api_key.txt') as file:
         api_key = file.read()
     stops = requests.get('https://api-v3.mbta.com/stops', params={'filter[route]': 'Green-D'}).json()
     options = []
