@@ -1,6 +1,5 @@
 import requests
 import gtfs_realtime_pb2
-import gzip
 import json
 import os
 from datetime import datetime
@@ -51,16 +50,49 @@ def save_predictions_to_directory(feed, directory):
     print(f"Saved predictions to {filename}")
 
 
+def save_vehicle_locations_to_directory(feed, directory):
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = os.path.join(directory, f"vehicle_locations_{timestamp}.json")
+
+    vehicle_locations = []
+    for entity in feed.entity:
+        if entity.vehicle:
+            vehicle = {
+                "vehicle_id": entity.vehicle.vehicle.id,
+                "trip_id": entity.vehicle.trip.trip_id,
+                "latitude": entity.vehicle.position.latitude,
+                "longitude": entity.vehicle.position.longitude,
+                "bearing": entity.vehicle.position.bearing,
+                "timestamp": entity.vehicle.timestamp
+            }
+            vehicle_locations.append(vehicle)
+
+    with open(filename, 'w') as f:
+        json.dump(vehicle_locations, f, indent=2)
+
+    print(f"Saved vehicle locations to {filename}")
+
+
 def main():
-    url = 'https://cdn.mbta.com/realtime/TripUpdates.pb'
-    output_directory = "data/ap_fetches"
+    trip_updates_url = 'https://cdn.mbta.com/realtime/TripUpdates.pb'
+    vehicle_positions_url = 'https://cdn.mbta.com/realtime/VehiclePositions.pb'
+    trip_updates_directory = "data/ap_fetches"
+    vehicle_locations_directory = "data/ap_fetches"
 
     try:
-        data = fetch_gtfs_realtime_data(url)
-        # If the data is gzipped, uncomment the next line
-        # data = gzip.decompress(data)
-        feed = parse_gtfs_realtime_data(data)
-        save_predictions_to_directory(feed, output_directory)
+        # Fetch and save trip updates
+        trip_updates_data = fetch_gtfs_realtime_data(trip_updates_url)
+        trip_updates_feed = parse_gtfs_realtime_data(trip_updates_data)
+        save_predictions_to_directory(trip_updates_feed, trip_updates_directory)
+
+        # Fetch and save vehicle locations
+        vehicle_positions_data = fetch_gtfs_realtime_data(vehicle_positions_url)
+        vehicle_positions_feed = parse_gtfs_realtime_data(vehicle_positions_data)
+        save_vehicle_locations_to_directory(vehicle_positions_feed, vehicle_locations_directory)
+
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
 
