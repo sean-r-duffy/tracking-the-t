@@ -75,12 +75,40 @@ def save_vehicle_locations_to_directory(feed, directory):
 
     print(f"Saved vehicle locations to {filename}")
 
+def save_boston_forecast_to_directory(url, directory, api_key):
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    
+    timestamp = datetime.now().strftime("%Y%m%d_%H")
+    filename = os.path.join(directory, f"boston_weather_{timestamp}.json")
+
+    if os.path.exists(filename):
+        return
+    
+    url = f"{url}&apikey={api_key}"
+    headers = {"accept": "application/json"}
+    response = requests.get(url, headers=headers).json()
+    response_values = response["timelines"]["hourly"][0]["values"]
+    needed_metrics = ['precipitationProbability', 'iceAccumulation', 'rainAccumulation', 'sleetAccumulation','snowAccumulation', 'snowDepth', 'temperature']
+    forecast = {key: response_values[key] for key in needed_metrics if key in response_values}
+    forecast["timestamp"] = timestamp
+
+    with open(filename, 'w') as f:
+        json.dump(forecast, f, indent=2)
+    
+    print(f"Saved forecast to {filename}")
 
 def main():
     trip_updates_url = 'https://cdn.mbta.com/realtime/TripUpdates.pb'
     vehicle_positions_url = 'https://cdn.mbta.com/realtime/VehiclePositions.pb'
+    weather_forecast_url = f"https://api.tomorrow.io/v4/weather/forecast?location=42.349706,-71.069855"
     trip_updates_directory = "data/ap_fetches"
     vehicle_locations_directory = "data/ap_fetches"
+    forecasts_directory = "data/ap_fetches"
+    
+    # Add your ouwn tomorrow.io API Key
+    with open('api_key.txt') as file:
+        weather_api_key = file.read()
 
     try:
         # Fetch and save trip updates
@@ -92,6 +120,9 @@ def main():
         vehicle_positions_data = fetch_gtfs_realtime_data(vehicle_positions_url)
         vehicle_positions_feed = parse_gtfs_realtime_data(vehicle_positions_data)
         save_vehicle_locations_to_directory(vehicle_positions_feed, vehicle_locations_directory)
+
+        # Fetch weather forecast once per hour
+        save_boston_forecast_to_directory(weather_forecast_url, forecasts_directory, weather_api_key)
 
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
