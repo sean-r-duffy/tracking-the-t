@@ -1,9 +1,18 @@
+#!/opt/anaconda3/envs/tracking-the-t/bin/python
+
 import requests
 import gtfs_realtime_pb2
 import json
 import os
 from datetime import datetime
+import logging
+from datetime import datetime
 
+# MUST CHANGE THIS TO YOUR OWN LOCAL DIRECTORY
+ABS_PATH = '/Users/seanduffy/PycharmProjects/tracking-the-t/'
+
+logging.basicConfig(filename=ABS_PATH + 'data/api_fetches/logfile.log', level=logging.INFO)
+logging.info(f"Script ran at {datetime.now()}")
 
 def fetch_gtfs_realtime_data(url):
     response = requests.get(url)
@@ -48,6 +57,7 @@ def save_predictions_to_directory(feed, directory):
         json.dump(predictions, f, indent=2)
 
     print(f"Saved predictions to {filename}")
+    logging.info(f"Saved predictions to {filename}")
 
 
 def save_vehicle_locations_to_directory(feed, directory):
@@ -74,40 +84,45 @@ def save_vehicle_locations_to_directory(feed, directory):
         json.dump(vehicle_locations, f, indent=2)
 
     print(f"Saved vehicle locations to {filename}")
+    logging.info(f"Saved vehicle locations to {filename}")
+
 
 def save_boston_forecast_to_directory(url, directory, api_key):
     if not os.path.exists(directory):
         os.makedirs(directory)
-    
+
     timestamp = datetime.now().strftime("%Y%m%d_%H")
     filename = os.path.join(directory, f"boston_weather_{timestamp}.json")
 
     if os.path.exists(filename):
         return
-    
+
     url = f"{url}&apikey={api_key}"
     headers = {"accept": "application/json"}
     response = requests.get(url, headers=headers).json()
     response_values = response["timelines"]["hourly"][0]["values"]
-    needed_metrics = ['precipitationProbability', 'iceAccumulation', 'rainAccumulation', 'sleetAccumulation','snowAccumulation', 'snowDepth', 'temperature']
+    needed_metrics = ['precipitationProbability', 'iceAccumulation', 'rainAccumulation', 'sleetAccumulation',
+                      'snowAccumulation', 'snowDepth', 'temperature']
     forecast = {key: response_values[key] for key in needed_metrics if key in response_values}
     forecast["timestamp"] = timestamp
 
     with open(filename, 'w') as f:
         json.dump(forecast, f, indent=2)
-    
+
     print(f"Saved forecast to {filename}")
+    logging.info(f"Saved forecast to {filename}")
+
 
 def main():
     trip_updates_url = 'https://cdn.mbta.com/realtime/TripUpdates.pb'
     vehicle_positions_url = 'https://cdn.mbta.com/realtime/VehiclePositions.pb'
     weather_forecast_url = f"https://api.tomorrow.io/v4/weather/forecast?location=42.349706,-71.069855"
-    trip_updates_directory = "data/ap_fetches"
-    vehicle_locations_directory = "data/ap_fetches"
-    forecasts_directory = "data/ap_fetches"
-    
-    # Add your ouwn tomorrow.io API Key
-    with open('api_key.txt') as file:
+    trip_updates_directory = ABS_PATH + "data/api_fetches"
+    vehicle_locations_directory = ABS_PATH + "data/api_fetches"
+    forecasts_directory = ABS_PATH + "data/api_fetches"
+
+    # Add your own tomorrow.io API Key
+    with open(ABS_PATH + 'weather_api_key.txt') as file:
         weather_api_key = file.read()
 
     try:
@@ -130,3 +145,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

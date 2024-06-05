@@ -1,0 +1,14 @@
+name: tracking-the-t
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - argon2-cffi-bindings==21.2.0
+  - async-lru==2.0.4
+  - certifi==2024.2.2
+  - colorama==0.4.6
+  - decorator==5.1.1
+  - defusedxml==0.7.1
+  - h11==0.14.0
+  - idna==3.7
+prefix: /opt/anaconda3/envs/tracking-the-t

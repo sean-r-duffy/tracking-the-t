@@ -169,3 +169,6 @@ cython_debug/
 /data/Rapid_Transit_and_Bus_Prediction_Accuracy_Data.csv
 /data/TravelTimes_2023.zip
 /data/ap_fetches/
+/mbta_sets
+/weather_api_key.txt
+/data/api_fetches/
