@@ -4,15 +4,21 @@ import requests
 import gtfs_realtime_pb2
 import json
 import os
-from datetime import datetime
 import logging
 from datetime import datetime
+
+'''
+This script is to be used for a cron job in order to collect api data at a set interval
+Example cron job to collect every minute:
+* * * * * /Users/seanduffy/PycharmProjects/tracking-the-t/api_script.py
+'''
 
 # MUST CHANGE THIS TO YOUR OWN LOCAL DIRECTORY
 ABS_PATH = '/Users/seanduffy/PycharmProjects/tracking-the-t/'
 
 logging.basicConfig(filename=ABS_PATH + 'data/api_fetches/logfile.log', level=logging.INFO)
 logging.info(f"Script ran at {datetime.now()}")
+
 
 def fetch_gtfs_realtime_data(url):
     response = requests.get(url)
@@ -117,9 +123,10 @@ def main():
     trip_updates_url = 'https://cdn.mbta.com/realtime/TripUpdates.pb'
     vehicle_positions_url = 'https://cdn.mbta.com/realtime/VehiclePositions.pb'
     weather_forecast_url = f"https://api.tomorrow.io/v4/weather/forecast?location=42.349706,-71.069855"
-    trip_updates_directory = ABS_PATH + "data/api_fetches"
-    vehicle_locations_directory = ABS_PATH + "data/api_fetches"
-    forecasts_directory = ABS_PATH + "data/api_fetches"
+    today_date = datetime.now().strftime("%Y%m%d")
+    trip_updates_directory = f"{ABS_PATH}data/api_fetches/{today_date}"
+    vehicle_locations_directory = f"{ABS_PATH}data/api_fetches/{today_date}"
+    forecasts_directory = f"{ABS_PATH}data/api_fetches/{today_date}"
 
     # Add your own tomorrow.io API Key
     with open(ABS_PATH + 'weather_api_key.txt') as file:
@@ -145,4 +152,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
