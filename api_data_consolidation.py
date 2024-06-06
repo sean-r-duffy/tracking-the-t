@@ -3,6 +3,10 @@ import json
 import os
 import re
 
+DATA_PATH = 'data/api_fetches/'
+WEATHER_PREFIX = 'boston_weather_'
+PRED_PREFIX = 'predictions_'
+LOC_PREFIX = 'vehicle_locations_'
 
 def clean_predictions(df):
     df = df.explode('stop_time_updates')
