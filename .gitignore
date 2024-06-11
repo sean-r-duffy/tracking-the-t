@@ -172,3 +172,4 @@ cython_debug/
 /mbta_sets
 /weather_api_key.txt
 /data/api_fetches/
+/data/mbta_v3/
